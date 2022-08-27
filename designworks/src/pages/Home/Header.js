@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Wrapper = styled.div`
   position: fixed;
@@ -17,8 +18,11 @@ const Title = styled.p`
 
 const Options = styled.div`
   margin-top: 94px;
+  display: flex;
+  flex-direction: column;
 `;
-const Option = styled.p`
+const Option = styled(Link)`
+  text-decoration: none;
   font-weight: 500;
   font-size: 18px;
   line-height: 27px;
@@ -32,10 +36,11 @@ const Header = () => {
     <Wrapper>
       <Title>DesignWorks</Title>
       <Options>
-        <Option>Home</Option>
-        <Option>Showcase</Option>
-        <Option>Services</Option>
-        <Option>Contact</Option>
+        <Option to={"#"}>Home</Option>
+        <Option to={"#"}>Showcase</Option>
+        <Option to={"#"}>Services</Option>
+        <Option to={"#"}>Contact</Option>
+        <Option to={"/messages"}>Messages</Option>
       </Options>
     </Wrapper>
   );

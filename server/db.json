@@ -8,39 +8,11 @@
       "timestamp": 1661522198359
     },
     {
-      "id": 2,
-      "name": "谷哥",
-      "email": "max@school.appworks.tw",
-      "message": "好好吃飯、好好睡覺、好好寫Code",
-      "timestamp": 1661522216001
-    },
-    {
-      "name": "12",
-      "email": "12",
-      "message": "12",
-      "timestamp": "",
-      "id": 3
-    },
-    {
-      "name": "沈昕牧",
-      "email": "aa@gmail.com",
-      "message": "hungry",
-      "timestamp": 1661578144304,
-      "id": 4
-    },
-    {
-      "name": "123",
-      "email": "123",
-      "message": "123",
-      "timestamp": 1661578775013,
-      "id": 5
-    },
-    {
-      "name": "123",
-      "email": "123",
-      "message": "123",
-      "timestamp": 1661578828392,
-      "id": 6
+      "name": "the god of river",
+      "email": "text@gmail.com",
+      "message": "We are a interior design service that focus on what's best for your home and what's best for you!",
+      "timestamp": 1661582164098,
+      "id": 2
     }
   ]
 }

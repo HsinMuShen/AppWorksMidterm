@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import api from "../../utils/api";
 
@@ -25,21 +26,43 @@ const DeleteBtn = styled.button`
   cursor: pointer;
 `;
 
+const HomeBtn = styled(Link)`
+  width: 100px;
+  height: 40px;
+  text-decoration: none;
+  color: #000000;
+  padding: 5px;
+  border: 1px solid;
+`;
+
 const Messages = () => {
   const [msgs, setMsgs] = useState([]);
+
+  const convertDate = (unitTime) => {
+    var date = new Date(unitTime);
+    let hours = date.getHours();
+    let minutes = "0" + date.getMinutes();
+    let seconds = "0" + date.getSeconds();
+    return hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
+  };
+
+  const getMsgData = async () => {
+    const response = await api.getMessages();
+    setMsgs(response);
+  };
+
+  const deleteMessage = async (id) => {
+    api.deleteMessage(id).then(() => getMsgData());
+  };
+
   useEffect(() => {
-    const getMsgData = async () => {
-      const response = await api.getMessages();
-      console.log(response);
-      setMsgs(response);
-    };
     getMsgData();
   }, []);
   return (
     <Wrapper>
       {msgs.map((msg) => {
         return (
-          <MessageArea>
+          <MessageArea key={msg.timestamp}>
             <Table>
               <Tbody>
                 <Tr>
@@ -56,14 +79,21 @@ const Messages = () => {
                 </Tr>
                 <Tr>
                   <Td>Timestamp:</Td>
-                  <Td>{msg.timestamp}</Td>
+                  <Td>{convertDate(msg.timestamp)}</Td>
                 </Tr>
               </Tbody>
             </Table>
-            <DeleteBtn>Delete</DeleteBtn>
+            <DeleteBtn
+              onClick={() => {
+                deleteMessage(msg.id);
+              }}
+            >
+              Delete
+            </DeleteBtn>
           </MessageArea>
         );
       })}
+      <HomeBtn to={"/"}>Home</HomeBtn>
     </Wrapper>
   );
 };
