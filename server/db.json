@@ -1,18 +1,3 @@
 {
-  "messages": [
-    {
-      "id": 1,
-      "name": "谷哥",
-      "email": "max@school.appworks.tw",
-      "message": "期中考加油 >.^",
-      "timestamp": 1661522198359
-    },
-    {
-      "name": "the god of river",
-      "email": "text@gmail.com",
-      "message": "We are a interior design service that focus on what's best for your home and what's best for you!",
-      "timestamp": 1661582164098,
-      "id": 2
-    }
-  ]
+  "messages": []
 }

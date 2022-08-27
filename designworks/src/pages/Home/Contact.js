@@ -1,6 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
 import api from "../../utils/api";
+import { storage } from "../../firebase";
+import { listAll, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const Wrapper = styled.div`
   margin-bottom: 72px;
@@ -59,6 +61,7 @@ const Contact = () => {
     email: "",
     message: "",
   });
+  const [imageUpload, setImgUpload] = useState(null);
 
   const sendMsg = async () => {
     // setSendData((prev) => ({
@@ -71,11 +74,29 @@ const Contact = () => {
         return;
       }
     }
+    if (imageUpload === null) {
+      alert("請上傳照片");
+      return;
+    }
+
     const data = sendData;
+    const imageRef = ref(
+      storage,
+      `images/${Math.floor(Date.now()) + imageUpload.name}`
+    );
+    const imageListRef = ref(storage, "images/");
+    await uploadBytes(imageRef, imageUpload);
+    const imgList = await listAll(imageListRef);
+    const imgUrl = await getDownloadURL(
+      imgList.items[imgList.items.length - 1]
+    );
+    data.imageUrl = imgUrl;
+
     data.timestamp = Math.floor(Date.now());
+    console.log(data);
 
     const response = await api.addMessage(data);
-
+    console.log(response);
     if (response) {
       alert("成功新增留言!");
     }
@@ -100,6 +121,16 @@ const Contact = () => {
           </ContactInputArea>
         );
       })}
+      <ContactInputArea key="image">
+        <ContactLabel>Image</ContactLabel>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => {
+            setImgUpload(e.target.files[0]);
+          }}
+        />
+      </ContactInputArea>
       <ContactBtn onClick={sendMsg}>Send Message</ContactBtn>
     </Wrapper>
   );
