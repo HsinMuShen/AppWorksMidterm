@@ -86,11 +86,11 @@ const Contact = () => {
     );
     const imageListRef = ref(storage, "images/");
     await uploadBytes(imageRef, imageUpload);
-    await listAll(imageListRef).then((res) => {
-      getDownloadURL(res.items[res.items.length - 1]).then((res) => {
-        data.imageUrl = res;
-      });
-    });
+    const imgList = await listAll(imageListRef);
+    const imgUrl = await getDownloadURL(
+      imgList.items[imgList.items.length - 1]
+    );
+    data.imageUrl = imgUrl;
 
     data.timestamp = Math.floor(Date.now());
     console.log(data);
