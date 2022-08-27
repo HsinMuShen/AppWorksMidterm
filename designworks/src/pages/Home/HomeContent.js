@@ -11,10 +11,16 @@ const Wrapper = styled.div`
   flex-direction: column;
 
   margin: 0 64px 0 364px;
+  @media screen and (max-width: 992px) {
+    margin: 0 16px;
+  }
 `;
 
 const TitleArea = styled.div`
-  margin: 72px 0 0;
+  margin: 80px 0 0;
+  @media screen and (max-width: 992px) {
+    margin: 84px 0 0;
+  }
 `;
 const Title = styled.p`
   color: #000000;
@@ -38,6 +44,12 @@ const Image = styled.img`
   margin-bottom: 16px;
   &:nth-child(odd) {
     margin-right: 16px;
+  }
+  @media screen and (max-width: 992px) {
+    width: 100%;
+    &:nth-child(odd) {
+      margin-right: 0px;
+    }
   }
 `;
 

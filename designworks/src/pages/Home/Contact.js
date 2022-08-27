@@ -16,6 +16,10 @@ const ContactInputArea = styled.div`
   display: flex;
   margin-bottom: 16px;
   align-items: center;
+  @media screen and (max-width: 992px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 const ContactLabel = styled.label`
   font-weight: 500;
@@ -30,6 +34,9 @@ const ContactInput = styled.input`
   border: 1px solid #cccccc;
   width: calc((100% - 104px));
   padding-left: 10px;
+  @media screen and (max-width: 992px) {
+    width: 100%;
+  }
 `;
 const ContactBtn = styled.button`
   width: 100%;
