@@ -25,7 +25,6 @@ const ContactLabel = styled.label`
   width: 104px;
 `;
 const ContactInput = styled.input`
-  width: 748px;
   height: 40px;
   background: #ffffff;
   border: 1px solid #cccccc;
@@ -33,8 +32,7 @@ const ContactInput = styled.input`
   padding-left: 10px;
 `;
 const ContactBtn = styled.button`
-  min-width: 100%;
-  width: 852px;
+  width: 100%;
   height: 48px;
   background: #f44336;
   border: 0px;
@@ -68,8 +66,9 @@ const Contact = () => {
     }
     const data = sendData;
     data.timestamp = Math.floor(Date.now());
-    console.log(data);
+
     const response = await api.addMessage(data);
+
     if (response) {
       alert("成功新增留言!");
     }

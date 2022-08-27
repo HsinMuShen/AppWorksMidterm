@@ -35,7 +35,6 @@ const Images = styled.div`
 `;
 const Image = styled.img`
   width: calc((100% - 16px) / 2);
-
   margin-bottom: 16px;
   &:nth-child(odd) {
     margin-right: 16px;
