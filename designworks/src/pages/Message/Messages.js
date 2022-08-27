@@ -19,6 +19,8 @@ const Tbody = styled.tbody``;
 const Tr = styled.tr``;
 const Td = styled.td``;
 
+const Image = styled.img``;
+
 const DeleteBtn = styled.button`
   width: 80px;
   height: 30px;
@@ -83,6 +85,7 @@ const Messages = () => {
                 </Tr>
               </Tbody>
             </Table>
+            <Image src={msg?.imageUrl} />
             <DeleteBtn
               onClick={() => {
                 deleteMessage(msg.id);

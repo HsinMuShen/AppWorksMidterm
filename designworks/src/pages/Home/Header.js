@@ -89,7 +89,7 @@ const CloseIcon = styled.img`
     cursor: pointer;
   }
 `;
-
+console.log(window.innerWidth <= 992);
 const Header = () => {
   const [isSideBar, setIsSideBar] = useState(false);
   return (
@@ -106,7 +106,11 @@ const Header = () => {
       <FadeScreen
         style={{ display: isSideBar ? "block" : "none" }}
       ></FadeScreen>
-      <NavList style={{ left: isSideBar ? "0" : "-300px" }}>
+      <NavList
+        style={{
+          left: window.innerWidth > 992 ? "0" : isSideBar ? 0 : "-300px",
+        }}
+      >
         <CloseIcon
           src={close}
           onClick={() => {
